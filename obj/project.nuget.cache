@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "P6ZetVePXVI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\victo\\Desktop\\quizsergipe-api\\quizsergipe-api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.7\\microsoft.aspnetcore.openapi.10.0.7.nupkg.sha512",
+    "C:\\Users\\victo\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
