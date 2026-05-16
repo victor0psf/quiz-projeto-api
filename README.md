@@ -16,7 +16,7 @@ O projeto ignora arquivos que nao devem ser versionados, como:
 
 Requisitos:
 
-- .NET SDK 10 instalado
+- .NET SDK 9 ou 10 instalado
 
 Passos:
 
@@ -41,7 +41,7 @@ dotnet run
 
 ## O que acontece ao rodar
 
-- o banco SQLite local e criado automaticamente
+- em desenvolvimento, o banco SQLite local e criado automaticamente
 - as 30 perguntas e alternativas sao inseridas via seed
 - o Swagger abre para teste dos endpoints
 
@@ -53,3 +53,44 @@ Se o navegador nao abrir sozinho, acesse:
 ## Observacao
 
 Nao e necessario cadastrar perguntas manualmente. O sistema ja sobe com as perguntas seedadas no banco.
+
+## CORS
+
+As origens permitidas ficam em `Cors:AllowedOrigins`.
+
+- desenvolvimento: `appsettings.Development.json`
+- producao: `appsettings.Production.json` ou variaveis de ambiente
+
+Exemplo de variavel de ambiente:
+
+```bash
+Cors__AllowedOrigins__0=https://meu-frontend.com
+```
+
+## Banco de dados
+
+O provider fica em `Database:Provider`.
+
+- `Sqlite` para desenvolvimento local
+- `PostgreSql` para producao
+
+Connection strings:
+
+- `ConnectionStrings__QuizDbSqlite`
+- `ConnectionStrings__QuizDbPostgreSql`
+
+Exemplo para PostgreSQL:
+
+```bash
+Database__Provider=PostgreSql
+ConnectionStrings__QuizDbPostgreSql=Host=localhost;Port=5432;Database=quizsergipe;Username=postgres;Password=postgres
+```
+
+## Migrations
+
+Para criar ou aplicar migrations do PostgreSQL:
+
+```bash
+dotnet ef migrations add InitialPostgreSql
+dotnet ef database update
+```

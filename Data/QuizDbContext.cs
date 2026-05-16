@@ -19,7 +19,7 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : DbContext(
         {
             entity.ToTable("Perguntas");
             entity.HasKey(x => x.Id);
-            entity.Property(x => x.Enunciado).IsRequired().HasMaxLength(500);
+            entity.Property(x => x.Enunciado).IsRequired().HasMaxLength(1000);
             entity.HasMany(x => x.Alternativas)
                 .WithOne(x => x.Pergunta)
                 .HasForeignKey(x => x.PerguntaId)
@@ -83,36 +83,36 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : DbContext(
     {
         return
         [
-            new Pergunta { Id = 1, Enunciado = "Qual e a capital de Sergipe?" },
-            new Pergunta { Id = 2, Enunciado = "Qual rio marca parte importante da divisa entre Sergipe e Alagoas?" },
-            new Pergunta { Id = 3, Enunciado = "Qual e a orla mais famosa de Aracaju?" },
-            new Pergunta { Id = 4, Enunciado = "Qual cidade sergipana e famosa pelo comercio ligado a caminhoes?" },
-            new Pergunta { Id = 5, Enunciado = "Sergipe e o menor estado brasileiro em qual criterio?" },
-            new Pergunta { Id = 6, Enunciado = "Qual oceano banha o litoral sergipano?" },
-            new Pergunta { Id = 7, Enunciado = "Qual cidade historica foi a primeira capital de Sergipe?" },
-            new Pergunta { Id = 8, Enunciado = "Qual universidade federal fica em Sergipe?" },
-            new Pergunta { Id = 9, Enunciado = "Qual bioma aparece em parte do territorio sergipano, principalmente no sertao?" },
-            new Pergunta { Id = 10, Enunciado = "Qual municipio e a principal porta de entrada para os canions do Xingó em Sergipe?" },
-            new Pergunta { Id = 11, Enunciado = "Qual e o nome do estadio principal de Aracaju?" },
-            new Pergunta { Id = 12, Enunciado = "Qual cidade e conhecida pela producao de laranja em Sergipe?" },
-            new Pergunta { Id = 13, Enunciado = "Qual cidade abriga o Museu da Gente Sergipana?" },
-            new Pergunta { Id = 14, Enunciado = "Qual ritmo musical e fortemente associado aos festejos juninos em Sergipe?" },
-            new Pergunta { Id = 15, Enunciado = "Quantas estrelas existem na bandeira de Sergipe?" },
-            new Pergunta { Id = 16, Enunciado = "Qual cor predomina na bandeira de Sergipe?" },
-            new Pergunta { Id = 17, Enunciado = "Qual e o gentilico de quem nasce em Sergipe?" },
-            new Pergunta { Id = 18, Enunciado = "Em qual data e comemorada a emancipacao politica de Sergipe?" },
-            new Pergunta { Id = 19, Enunciado = "Qual mercado tradicional de Aracaju e um ponto turistico conhecido?" },
-            new Pergunta { Id = 20, Enunciado = "Qual cidade sergipana e conhecida pelas festas juninas do pais do forro?" },
-            new Pergunta { Id = 21, Enunciado = "Qual municipio e conhecido pela renda irlandesa em Sergipe?" },
-            new Pergunta { Id = 22, Enunciado = "Qual cidade fica proxima ao encontro do rio Sao Francisco com o mar em Sergipe?" },
-            new Pergunta { Id = 23, Enunciado = "Qual prato com fruto do mar e bastante associado a culinaria sergipana no litoral?" },
-            new Pergunta { Id = 24, Enunciado = "Qual usina hidreletrica esta relacionada ao canion do Xingó?" },
-            new Pergunta { Id = 25, Enunciado = "Qual cidade foi planejada para ser a capital de Sergipe no seculo XIX?" },
-            new Pergunta { Id = 26, Enunciado = "Qual atividade economica teve grande importancia no periodo colonial sergipano?" },
-            new Pergunta { Id = 27, Enunciado = "Qual municipio integra a regiao metropolitana e fica em frente a Aracaju, separado pelo rio Sergipe?" },
-            new Pergunta { Id = 28, Enunciado = "Qual rio corta a capital Aracaju e da nome ao estado?" },
-            new Pergunta { Id = 29, Enunciado = "Qual cidade sergipana e conhecida como Cidade Jardim?" },
-            new Pergunta { Id = 30, Enunciado = "Qual municipio sergipano e historicamente conhecido por seu conjunto arquitetonico colonial e tradicao cultural?" }
+            NovaPergunta(1, "Qual manifestação folclórica de Laranjeiras utiliza melaço de cana para pintar o corpo dos participantes que representam escravizados fugidos?"),
+            NovaPergunta(2, "Como é chamada a figura histórica que media 2,25 metros e é considerada a mulher mais alta de Sergipe?"),
+            NovaPergunta(3, "Quem era o prático que atravessava a barra do Rio Sergipe a nado para guiar as embarcações?"),
+            NovaPergunta(4, "Qual é o artefato de pirotecnia artesanal que corre num arame e é o maior símbolo de Estância?"),
+            NovaPergunta(5, "Qual apelido carinhoso Sergipe recebe durante o mês de junho pela animação das suas festas?"),
+            NovaPergunta(6, "Qual crustáceo é servido tradicionalmente com pirão e vinagrete na Orla da Atalaia?"),
+            NovaPergunta(7, "Qual fruto é tão importante que o nome da capital, Aracaju, deriva de um termo indígena ligado a ele?"),
+            NovaPergunta(8, "Qual cidade sergipana é a 4ª mais antiga do Brasil e possui uma praça que é Patrimônio da Humanidade?"),
+            NovaPergunta(9, "Qual movimento social do sertão teve seu fim trágico na Grota de Angicos, em território sergipano?"),
+            NovaPergunta(10, "Qual grupo folclórico utiliza armas longas (carregadas com pólvora seca) para saudar santos e autoridades?"),
+            NovaPergunta(11, "Qual grupo folclórico usa trajes espelhados e chapéus em forma de castelo para celebrar o Dia de Reis?"),
+            NovaPergunta(12, "Qual petisco, geralmente vendido cozido em carrinhos, é considerado Patrimônio Imaterial de Sergipe?"),
+            NovaPergunta(13, "Como o Rio São Francisco é carinhosamente chamado pela população ribeirinha de Sergipe?"),
+            NovaPergunta(14, "Qual mercado central de Aracaju é famoso pela venda de artesanato, rendas e artigos de palha?"),
+            NovaPergunta(15, "Qual iguaria junina é feita de massa de puba (mandioca fermentada), coco e açúcar, assada tradicionalmente no forno a lenha?"),
+            NovaPergunta(16, "Qual fruto silvestre é considerado o fruto símbolo de Sergipe e é base de sorvetes e doces amados localmente?"),
+            NovaPergunta(17, "Como se chama o gênero literário popular, escrito em versos rimados e métrica rígida, que tradicionalmente é impresso em pequenos folhetos e exposto em cordas nas feiras?"),
+            NovaPergunta(18, "Na tradicional festa de Laranjeiras, qual grupo representa os indígenas catequizados e usa cocares de penas?"),
+            NovaPergunta(19, "Quem foi a primeira mulher a entrar oficialmente para o bando de Lampião, tornando-se Rainha do Cangaço?"),
+            NovaPergunta(20, "Qual cidade sergipana é conhecida como a \"Capital do Caminhão\" e maior centro de castanha de caju?"),
+            NovaPergunta(21, "Qual banda de Aracaju conquistou o Brasil nos anos 2000 com o \"Forró Eletrônico\" e tinha Paulinha Abelha como uma de suas estrelas?"),
+            NovaPergunta(22, "Em qual data de outubro comemora-se oficialmente o Dia da Sergipanidade?"),
+            NovaPergunta(23, "Qual material é misturado ao melaço de cana para dar a cor preta à pele dos participantes dos Lambe-Sujos?"),
+            NovaPergunta(24, "Qual cantora sergipana é conhecida como a \"Rainha do Forró\" e imortalizou o sucesso \"Prenda o Tadeu\"?"),
+            NovaPergunta(25, "Qual das figuras bíblicas abaixo é a grande homenageada nas festas de Reisado em Sergipe?"),
+            NovaPergunta(26, "Qual cidade sergipana é famosa pela produção de cerâmica artesanal, especialmente as \"bonecas\" de barro?"),
+            NovaPergunta(27, "Qual é o bairro de Aracaju onde se localiza a famosa \"Passarela do Caranguejo\"?"),
+            NovaPergunta(28, "Como é chamado o ritual junino de Capela que envolve a busca por uma árvore na mata para ser plantada no centro da cidade?"),
+            NovaPergunta(29, "Como é chamado o maior evento de arte e cultura que ocorre anualmente na cidade de São Cristóvão?"),
+            NovaPergunta(30, "Qual o ritmo musical que define a identidade de Sergipe como o \"País do Forró\"?")
         ];
     }
 
@@ -120,37 +120,46 @@ public class QuizDbContext(DbContextOptions<QuizDbContext> options) : DbContext(
     {
         return
         [
-            NovaAlternativa(1, 1, "A", "Aracaju", true), NovaAlternativa(2, 1, "B", "Estancia"), NovaAlternativa(3, 1, "C", "Lagarto"), NovaAlternativa(4, 1, "D", "Itabaiana"),
-            NovaAlternativa(5, 2, "A", "Rio Sergipe"), NovaAlternativa(6, 2, "B", "Rio Sao Francisco", true), NovaAlternativa(7, 2, "C", "Rio Real"), NovaAlternativa(8, 2, "D", "Rio Vaza-Barris"),
-            NovaAlternativa(9, 3, "A", "Orla do Farol"), NovaAlternativa(10, 3, "B", "Orla de Atalaia", true), NovaAlternativa(11, 3, "C", "Orla do Saco"), NovaAlternativa(12, 3, "D", "Orla de Pirambu"),
-            NovaAlternativa(13, 4, "A", "Itabaiana", true), NovaAlternativa(14, 4, "B", "Lagarto"), NovaAlternativa(15, 4, "C", "Capela"), NovaAlternativa(16, 4, "D", "Estancia"),
-            NovaAlternativa(17, 5, "A", "Populacao"), NovaAlternativa(18, 5, "B", "PIB"), NovaAlternativa(19, 5, "C", "Extensao territorial", true), NovaAlternativa(20, 5, "D", "Quantidade de municipios"),
-            NovaAlternativa(21, 6, "A", "Oceano Atlantico", true), NovaAlternativa(22, 6, "B", "Oceano Pacifico"), NovaAlternativa(23, 6, "C", "Mar Mediterraneo"), NovaAlternativa(24, 6, "D", "Mar do Caribe"),
-            NovaAlternativa(25, 7, "A", "Sao Cristovao", true), NovaAlternativa(26, 7, "B", "Laranjeiras"), NovaAlternativa(27, 7, "C", "Propria"), NovaAlternativa(28, 7, "D", "Neopolis"),
-            NovaAlternativa(29, 8, "A", "Universidade de Sergipe"), NovaAlternativa(30, 8, "B", "Universidade Federal de Sergipe", true), NovaAlternativa(31, 8, "C", "Instituto Federal de Sergipe"), NovaAlternativa(32, 8, "D", "Universidade Estadual de Aracaju"),
-            NovaAlternativa(33, 9, "A", "Pantanal"), NovaAlternativa(34, 9, "B", "Mata de Araucaria"), NovaAlternativa(35, 9, "C", "Caatinga", true), NovaAlternativa(36, 9, "D", "Pampa"),
-            NovaAlternativa(37, 10, "A", "Caninde de Sao Francisco", true), NovaAlternativa(38, 10, "B", "Pirambu"), NovaAlternativa(39, 10, "C", "Pacatuba"), NovaAlternativa(40, 10, "D", "Estancia"),
-            NovaAlternativa(41, 11, "A", "Batistao", true), NovaAlternativa(42, 11, "B", "Mangueirao"), NovaAlternativa(43, 11, "C", "Rei Pele"), NovaAlternativa(44, 11, "D", "Fonte Nova"),
-            NovaAlternativa(45, 12, "A", "Boquim", true), NovaAlternativa(46, 12, "B", "Umbauba"), NovaAlternativa(47, 12, "C", "Lagarto"), NovaAlternativa(48, 12, "D", "Itabaianinha"),
-            NovaAlternativa(49, 13, "A", "Aracaju", true), NovaAlternativa(50, 13, "B", "Sao Cristovao"), NovaAlternativa(51, 13, "C", "Estancia"), NovaAlternativa(52, 13, "D", "Tobias Barreto"),
-            NovaAlternativa(53, 14, "A", "Frevo"), NovaAlternativa(54, 14, "B", "Forro", true), NovaAlternativa(55, 14, "C", "Carimbo"), NovaAlternativa(56, 14, "D", "Samba-reggae"),
-            NovaAlternativa(57, 15, "A", "4"), NovaAlternativa(58, 15, "B", "5", true), NovaAlternativa(59, 15, "C", "6"), NovaAlternativa(60, 15, "D", "7"),
-            NovaAlternativa(61, 16, "A", "Verde"), NovaAlternativa(62, 16, "B", "Amarelo"), NovaAlternativa(63, 16, "C", "Azul", true), NovaAlternativa(64, 16, "D", "Vermelho"),
-            NovaAlternativa(65, 17, "A", "Sergipano", true), NovaAlternativa(66, 17, "B", "Sergiense"), NovaAlternativa(67, 17, "C", "Sergipista"), NovaAlternativa(68, 17, "D", "Sergipano do norte"),
-            NovaAlternativa(69, 18, "A", "24 de outubro"), NovaAlternativa(70, 18, "B", "8 de julho", true), NovaAlternativa(71, 18, "C", "7 de setembro"), NovaAlternativa(72, 18, "D", "15 de novembro"),
-            NovaAlternativa(73, 19, "A", "Mercado Municipal Antonio Franco", true), NovaAlternativa(74, 19, "B", "Mercado Central do Sertao"), NovaAlternativa(75, 19, "C", "Mercado de Atalaia"), NovaAlternativa(76, 19, "D", "Mercado do Xingó"),
-            NovaAlternativa(77, 20, "A", "Capela", true), NovaAlternativa(78, 20, "B", "Nossa Senhora da Gloria"), NovaAlternativa(79, 20, "C", "Aquidaba"), NovaAlternativa(80, 20, "D", "Cristinapolis"),
-            NovaAlternativa(81, 21, "A", "Divina Pastora", true), NovaAlternativa(82, 21, "B", "Boquim"), NovaAlternativa(83, 21, "C", "Itaporanga d'Ajuda"), NovaAlternativa(84, 21, "D", "Pacatuba"),
-            NovaAlternativa(85, 22, "A", "Brejo Grande", true), NovaAlternativa(86, 22, "B", "Propria"), NovaAlternativa(87, 22, "C", "Barra dos Coqueiros"), NovaAlternativa(88, 22, "D", "Estancia"),
-            NovaAlternativa(89, 23, "A", "Feijoada"), NovaAlternativa(90, 23, "B", "Caranguejada", true), NovaAlternativa(91, 23, "C", "Pamonha"), NovaAlternativa(92, 23, "D", "Galinhada"),
-            NovaAlternativa(93, 24, "A", "Sobradinho"), NovaAlternativa(94, 24, "B", "Xingo", true), NovaAlternativa(95, 24, "C", "Paulo Afonso IV"), NovaAlternativa(96, 24, "D", "Moxoto"),
-            NovaAlternativa(97, 25, "A", "Aracaju", true), NovaAlternativa(98, 25, "B", "Estancia"), NovaAlternativa(99, 25, "C", "Laranjeiras"), NovaAlternativa(100, 25, "D", "Sao Cristovao"),
-            NovaAlternativa(101, 26, "A", "Industria automobilistica"), NovaAlternativa(102, 26, "B", "Cana-de-acucar", true), NovaAlternativa(103, 26, "C", "Tecnologia da informacao"), NovaAlternativa(104, 26, "D", "Mineracao de cobre"),
-            NovaAlternativa(105, 27, "A", "Barra dos Coqueiros", true), NovaAlternativa(106, 27, "B", "Lagarto"), NovaAlternativa(107, 27, "C", "Boquim"), NovaAlternativa(108, 27, "D", "Neopolis"),
-            NovaAlternativa(109, 28, "A", "Rio Vaza-Barris"), NovaAlternativa(110, 28, "B", "Rio Sergipe", true), NovaAlternativa(111, 28, "C", "Rio Poxim"), NovaAlternativa(112, 28, "D", "Rio Real"),
-            NovaAlternativa(113, 29, "A", "Estancia"), NovaAlternativa(114, 29, "B", "Aracaju", true), NovaAlternativa(115, 29, "C", "Itabaiana"), NovaAlternativa(116, 29, "D", "Sao Cristovao"),
-            NovaAlternativa(117, 30, "A", "Laranjeiras", true), NovaAlternativa(118, 30, "B", "Caninde de Sao Francisco"), NovaAlternativa(119, 30, "C", "Boquim"), NovaAlternativa(120, 30, "D", "Poco Redondo")
+            NovaAlternativa(1, 1, "A", "Reisado"), NovaAlternativa(2, 1, "B", "Bacamarteiros"), NovaAlternativa(3, 1, "C", "Lambe-Sujos", true), NovaAlternativa(4, 1, "D", "Caboclinhos"),
+            NovaAlternativa(5, 2, "A", "Maria Bonita"), NovaAlternativa(6, 2, "B", "Maria Feliciana", true), NovaAlternativa(7, 2, "C", "Clemilda"), NovaAlternativa(8, 2, "D", "Dona Suja"),
+            NovaAlternativa(9, 3, "A", "Zé Peixe", true), NovaAlternativa(10, 3, "B", "Mateus"), NovaAlternativa(11, 3, "C", "Lampião"), NovaAlternativa(12, 3, "D", "Pedro Bombacho"),
+            NovaAlternativa(13, 4, "A", "Bacamarte"), NovaAlternativa(14, 4, "B", "Buscapé"), NovaAlternativa(15, 4, "C", "Espada"), NovaAlternativa(16, 4, "D", "Barco de Fogo", true),
+            NovaAlternativa(17, 5, "A", "Terra da Luz"), NovaAlternativa(18, 5, "B", "País do Forró", true), NovaAlternativa(19, 5, "C", "Capital do Caju"), NovaAlternativa(20, 5, "D", "Cidade Sorriso"),
+            NovaAlternativa(21, 6, "A", "Siri"), NovaAlternativa(22, 6, "B", "Caranguejo", true), NovaAlternativa(23, 6, "C", "Camarão"), NovaAlternativa(24, 6, "D", "Lagosta"),
+            NovaAlternativa(25, 7, "A", "Mangaba"), NovaAlternativa(26, 7, "B", "Manga"), NovaAlternativa(27, 7, "C", "Caju", true), NovaAlternativa(28, 7, "D", "Umbu"),
+            NovaAlternativa(29, 8, "A", "Laranjeiras"), NovaAlternativa(30, 8, "B", "São Cristóvão", true), NovaAlternativa(31, 8, "C", "Itabaiana"), NovaAlternativa(32, 8, "D", "Estância"),
+            NovaAlternativa(33, 9, "A", "Cabanagem"), NovaAlternativa(34, 9, "B", "Cangaço", true), NovaAlternativa(35, 9, "C", "Revolta da Chibata"), NovaAlternativa(36, 9, "D", "Messianismo"),
+            NovaAlternativa(37, 10, "A", "Guerreiro"), NovaAlternativa(38, 10, "B", "Reisado"), NovaAlternativa(39, 10, "C", "Bacamarteiros", true), NovaAlternativa(40, 10, "D", "Parafusos"),
+            NovaAlternativa(41, 11, "A", "Reisado", true), NovaAlternativa(42, 11, "B", "Chegança"), NovaAlternativa(43, 11, "C", "Lambe-Sujos"), NovaAlternativa(44, 11, "D", "Cacumbi"),
+            NovaAlternativa(45, 12, "A", "Acarajé"), NovaAlternativa(46, 12, "B", "Amendoim cozido", true), NovaAlternativa(47, 12, "C", "Macaxeira"), NovaAlternativa(48, 12, "D", "Milho assado"),
+            NovaAlternativa(49, 13, "A", "Rio Mar"), NovaAlternativa(50, 13, "B", "Velho Chico", true), NovaAlternativa(51, 13, "C", "Rio das Garças"), NovaAlternativa(52, 13, "D", "Opará (embora seja o nome indígena, o apelido carinhoso popular é Velho Chico)"),
+            NovaAlternativa(53, 14, "A", "Mercado Albano Franco"), NovaAlternativa(54, 14, "B", "Mercado Thales Ferraz", true), NovaAlternativa(55, 14, "C", "Mercado da Piçarra"), NovaAlternativa(56, 14, "D", "Mercado de Itabaiana"),
+            NovaAlternativa(57, 15, "A", "Bolo de Milho"), NovaAlternativa(58, 15, "B", "Pé de Moleque Sergipano", true), NovaAlternativa(59, 15, "C", "Canjica"), NovaAlternativa(60, 15, "D", "Pamonha"),
+            NovaAlternativa(61, 16, "A", "Graviola"), NovaAlternativa(62, 16, "B", "Mangaba", true), NovaAlternativa(63, 16, "C", "Pitomba"), NovaAlternativa(64, 16, "D", "Seriguela"),
+            NovaAlternativa(65, 17, "A", "Repente"), NovaAlternativa(66, 17, "B", "Cordel", true), NovaAlternativa(67, 17, "C", "Soneto"), NovaAlternativa(68, 17, "D", "Crônica"),
+            NovaAlternativa(69, 18, "A", "Lambe-Sujos"), NovaAlternativa(70, 18, "B", "Caboclinhos", true), NovaAlternativa(71, 18, "C", "Taieira"), NovaAlternativa(72, 18, "D", "Cacumbi"),
+            NovaAlternativa(73, 19, "A", "Dadá"), NovaAlternativa(74, 19, "B", "Enedina"), NovaAlternativa(75, 19, "C", "Maria Bonita", true), NovaAlternativa(76, 19, "D", "Maria Feliciana"),
+            NovaAlternativa(77, 20, "A", "Estância"), NovaAlternativa(78, 20, "B", "Itabaiana", true), NovaAlternativa(79, 20, "C", "Propriá"), NovaAlternativa(80, 20, "D", "Lagarto"),
+            NovaAlternativa(81, 21, "A", "Mastruz com Leite"), NovaAlternativa(82, 21, "B", "Calcinha Preta", true), NovaAlternativa(83, 21, "C", "Cavaleiros do Forró"), NovaAlternativa(84, 21, "D", "Magníficos"),
+            NovaAlternativa(85, 22, "A", "12 de outubro"), NovaAlternativa(86, 22, "B", "24 de outubro", true), NovaAlternativa(87, 22, "C", "17 de março"), NovaAlternativa(88, 22, "D", "08 de julho"),
+            NovaAlternativa(89, 23, "A", "Tinta guache"), NovaAlternativa(90, 23, "B", "Lama de mangue"), NovaAlternativa(91, 23, "C", "Pó de fuligem (carvão)", true), NovaAlternativa(92, 23, "D", "Graxa de sapato"),
+            NovaAlternativa(93, 24, "A", "Amorosa"), NovaAlternativa(94, 24, "B", "Clemilda", true), NovaAlternativa(95, 24, "C", "Paulinha Abelha"), NovaAlternativa(96, 24, "D", "Maysa"),
+            NovaAlternativa(97, 25, "A", "São João"), NovaAlternativa(98, 25, "B", "Santo Antônio"), NovaAlternativa(99, 25, "C", "Reis Magos", true), NovaAlternativa(100, 25, "D", "São Pedro"),
+            NovaAlternativa(101, 26, "A", "Itabaiana"), NovaAlternativa(102, 26, "B", "Santana do São Francisco", true), NovaAlternativa(103, 26, "C", "Umbaúba"), NovaAlternativa(104, 26, "D", "Simão Dias"),
+            NovaAlternativa(105, 27, "A", "Centro"), NovaAlternativa(106, 27, "B", "Atalaia", true), NovaAlternativa(107, 27, "C", "Jardins"), NovaAlternativa(108, 27, "D", "Bairro Industrial"),
+            NovaAlternativa(109, 28, "A", "Queima do Judas"), NovaAlternativa(110, 28, "B", "Festa do Mastro", true), NovaAlternativa(111, 28, "C", "Casamento Caipira"), NovaAlternativa(112, 28, "D", "Batalha de Buscapés"),
+            NovaAlternativa(113, 29, "A", "Forró Caju"), NovaAlternativa(114, 29, "B", "FASC (Festival de Artes de São Cristóvão)", true), NovaAlternativa(115, 29, "C", "Verão Sergipe"), NovaAlternativa(116, 29, "D", "Festa do Mastro"),
+            NovaAlternativa(117, 30, "A", "Axé"), NovaAlternativa(118, 30, "B", "Samba"), NovaAlternativa(119, 30, "C", "Forró", true), NovaAlternativa(120, 30, "D", "Pagode")
         ];
+    }
+
+    private static Pergunta NovaPergunta(int id, string enunciado)
+    {
+        return new Pergunta
+        {
+            Id = id,
+            Enunciado = enunciado
+        };
     }
 
     private static Alternativa NovaAlternativa(int id, int perguntaId, string letra, string texto, bool correta = false)
