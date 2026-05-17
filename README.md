@@ -94,3 +94,36 @@ Para criar ou aplicar migrations do PostgreSQL:
 dotnet ef migrations add InitialPostgreSql
 dotnet ef database update
 ```
+
+## Deploy no Render
+
+O projeto esta preparado para Render com:
+
+- `Dockerfile` na raiz
+- `render.yaml` na raiz
+- banco Render Postgres referenciado automaticamente
+- `health check` em `/health`
+
+Passos:
+
+1. Suba este repositorio para o GitHub.
+2. No Render, clique em `New` > `Blueprint`.
+3. Conecte o repositorio.
+4. O Render vai ler o `render.yaml` e criar:
+   - um Web Service `quizsergipe-api`
+   - um banco `quizsergipe-db`
+5. No fluxo de criacao, preencha o valor da variavel `Cors__AllowedOrigins__0` com a URL do seu frontend.
+6. Conclua o deploy.
+
+Observacoes:
+
+- o backend sobe em `Production`
+- o app usa `Database__Provider=PostgreSql`
+- a connection string vem do proprio banco criado no Render
+- em PostgreSQL, a aplicacao roda `Database.Migrate()` no startup
+
+Fontes oficiais Render:
+
+- Blueprints: https://render.com/docs/blueprint-spec
+- Variaveis de ambiente: https://render.com/docs/configure-environment-variables
+- Web Services: https://render.com/docs/web-services

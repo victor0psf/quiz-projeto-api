@@ -4,6 +4,12 @@ using quizsergipe_api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var corsOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
+var renderPort = Environment.GetEnvironmentVariable("PORT");
+
+if (!string.IsNullOrWhiteSpace(renderPort))
+{
+    builder.WebHost.UseUrls($"http://0.0.0.0:{renderPort}");
+}
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -39,6 +45,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("Frontend");
 app.UseAuthorization();
+app.MapGet("/health", () => Results.Ok(new { status = "ok" }));
 app.MapControllers();
 
 using (var scope = app.Services.CreateScope())

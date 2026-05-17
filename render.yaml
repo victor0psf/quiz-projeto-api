@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: quizsergipe-api
+    runtime: docker
+    plan: starter
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: Database__Provider
+        value: PostgreSql
+      - key: ConnectionStrings__QuizDbPostgreSql
+        fromDatabase:
+          name: quizsergipe-db
+          property: connectionString
+      - key: Cors__AllowedOrigins__0
+        sync: false
+
+databases:
+  - name: quizsergipe-db
+    plan: basic-256mb
+    region: oregon
+    postgresMajorVersion: "17"
